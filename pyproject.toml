@@ -1,0 +1,20 @@
+[project]
+name = "image-tools"
+version = "0.1.0"
+description = "A collection of simple image tools for renaming and converting images."
+authors = [{ name = "Guillaume Mousnier", email = "guillaume.mousnier@datawizard.fr" }]
+dependencies = [
+    "Pillow>=10.0.0",
+    "pyheif>=0.7.0"
+]
+
+[project.scripts]
+convert-heic-to-jpg = "src.convert_heic_to_jpg:main"
+rename-files = "src.rename_files:main"
+
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = ["pytest", "flake8", "black"]

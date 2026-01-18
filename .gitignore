@@ -1,0 +1,30 @@
+# Environments
+.venv
+.env
+venv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# Tests
+__pycache__/
+.test_cache/
