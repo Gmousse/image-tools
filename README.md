@@ -7,41 +7,27 @@ Designed for personal need, not for a common usage.
 
 Python > 3.10
 
-uv 
+uv
 
 ## Installation
 
 1. Clone this repository or download the code.
 
-2. Create and activate a virtual environment with `uv`:
+2. Use uv tool
 
 ```bash
-uv venv
-source .venv/bin/activate  # On Linux/Mac
-# .\.venv\Scripts\activate  # On Windows
-```
-
-3. Install the dependencies:
-
-```bash
-uv pip install -e .
-```
-
-4. (Optional) Install development dependencies:
-
-```bash
-uv pip install --dev
+uv tool install .
 ```
 
 ## Tools
 
-### 1. Convert HEIC to JPG
+### 1. Convert HEIC images to JPG
 
 Convert HEIC files to JPG in a directory.
 
 **Usage:**
 ```bash
-convert-heic-to-jpg /path/to/directory -q 90 -m True
+convert-heic-images-to-jpg /path/to/directory -q 90 -m True
 ```
 
 **Arguments:**
@@ -49,13 +35,13 @@ convert-heic-to-jpg /path/to/directory -q 90 -m True
 - `-q, --quality`: Quality of the output JPG (1-100). Default is 90.
 - `-m, --multithread`: Multithread the treatment. True by default.
 
-### 2. Rename Files
+### 2. Rename images by date
 
 Rename files in a directory based on creation date.
 
 **Usage:**
 ```bash
-rename-files /path/to/directory -f "%Y-%m-%dT%H:%M:%S" -d 0 -m True
+rename-images-by-date /path/to/directory -f "%Y-%m-%dT%H:%M:%S" -d 0 -m True
 ```
 
 **Arguments:**
@@ -65,6 +51,28 @@ rename-files /path/to/directory -f "%Y-%m-%dT%H:%M:%S" -d 0 -m True
 - `-m, --multithread`: Multithread the treatment. True by default.
 
 ## Development
+
+### Install dependencies
+
+1. Create and activate a virtual environment with `uv`:
+
+```bash
+uv venv
+source .venv/bin/activate  # On Linux/Mac
+# .\.venv\Scripts\activate  # On Windows
+```
+
+2. Install the dependencies:
+
+```bash
+uv pip install -e .
+```
+
+3. (Optional) Install development dependencies:
+
+```bash
+uv pip install --dev
+```
 
 ### Formatting and Linting
 

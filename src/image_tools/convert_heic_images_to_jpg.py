@@ -34,7 +34,7 @@ def init_argument_parser():
     return parser
 
 
-def convert_heic_to_jpg(file_path: "Path", quality=QUALITY):
+def convert_heic_image_to_jpg(file_path: "Path", quality=QUALITY):
     try:
         heifFile = pyheif.read(file_path)
         image = Image.frombytes(
@@ -56,10 +56,10 @@ def is_heic_file(file_path: "Path"):
     return file_path.suffix.lower() == ".heic"
 
 
-def convert_heic_files_to_jpg(dir_path: "Path", quality=QUALITY, multithread=True):
+def convert_heic_images_to_jpg(dir_path: "Path", quality=QUALITY, multithread=True):
     def _convert(file_path: "Path"):
         if is_heic_file(file_path):
-            return convert_heic_to_jpg(file_path, quality)
+            return convert_heic_image_to_jpg(file_path, quality)
 
     files = list_all_files_recursively(dir_path)
     if multithread:
@@ -73,7 +73,7 @@ def convert_heic_files_to_jpg(dir_path: "Path", quality=QUALITY, multithread=Tru
 def main():
     logging.basicConfig(format="[%(levelname)s] %(message)s", level=logging.INFO)
     args = init_argument_parser().parse_args()
-    convert_heic_files_to_jpg(args.path, args.quality, args.multithread)
+    convert_heic_images_to_jpg(args.path, args.quality, args.multithread)
 
 
 if __name__ == "__main__":
