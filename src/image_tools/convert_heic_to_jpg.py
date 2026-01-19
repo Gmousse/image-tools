@@ -70,7 +70,11 @@ def convert_heic_files_to_jpg(dir_path: "Path", quality=QUALITY, multithread=Tru
             _convert(file_path)
 
 
-if __name__ == "__main__":
+def main():
     logging.basicConfig(format="[%(levelname)s] %(message)s", level=logging.INFO)
     args = init_argument_parser().parse_args()
     convert_heic_files_to_jpg(args.path, args.quality, args.multithread)
+
+
+if __name__ == "__main__":
+    main()

@@ -57,7 +57,7 @@ def extract_file_creation_datetime(file: "Path", delta_seconds: "int"):
     return creationDate + timedelta(seconds=delta_seconds)
 
 
-def rename_file(
+def rename_file_by_date(
     file_path: "Path",
     datetime_format=DEFAULT_DATETIME_FORMAT,
     delta_seconds=DEFAULT_DELTA_SECONDS,
@@ -79,14 +79,14 @@ def rename_file(
     file_path.rename(new_file)
 
 
-def rename_files(
+def rename_files_by_date(
     dir_path: "Path",
     datetime_format=DEFAULT_DATETIME_FORMAT,
     delta_seconds=DEFAULT_DELTA_SECONDS,
     multithread=True,
 ):
     def _rename(file_path: "Path"):
-        return rename_file(file_path, datetime_format, delta_seconds)
+        return rename_file_by_date(file_path, datetime_format, delta_seconds)
 
     files = list_all_files_recursively(dir_path)
     if multithread is True:
@@ -97,7 +97,11 @@ def rename_files(
             _rename(file_path)
 
 
-if __name__ == "__main__":
+def main():
     logging.basicConfig(format="[%(levelname)s] %(message)s", level=logging.INFO)
     args = init_argument_parser().parse_args()
-    rename_files(args.path, args.format, args.delta, args.multithread)
+    rename_files_by_date(args.path, args.format, args.delta, args.multithread)
+
+
+if __name__ == "__main__":
+    main()
