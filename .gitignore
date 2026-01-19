@@ -9,8 +9,6 @@ __pycache__/
 *$py.class
 
 # IDE
-.idea/
-.vscode/
 *.swp
 *.swo
 
