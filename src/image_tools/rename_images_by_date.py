@@ -100,7 +100,7 @@ def rename_images_by_date(
 def main():
     logging.basicConfig(format="[%(levelname)s] %(message)s", level=logging.INFO)
     args = init_argument_parser().parse_args()
-    rename_images_by_date(args.path, args.format, args.delta, args.multithread)
+    rename_images_by_date(args.dir_path, args.format, args.delta, args.multithread)
 
 
 if __name__ == "__main__":
