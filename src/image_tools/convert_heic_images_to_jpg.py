@@ -2,12 +2,15 @@ import os
 import argparse
 from pathlib import Path
 from PIL import Image
-import pyheif
+from pillow_heif import register_heif_opener
 import logging
 from multiprocessing.pool import ThreadPool
 from .files import list_all_files_recursively
 
 QUALITY = 100
+
+
+register_heif_opener()
 
 
 def init_argument_parser():
@@ -36,17 +39,9 @@ def init_argument_parser():
 
 def convert_heic_image_to_jpg(file_path: "Path", quality=QUALITY):
     try:
-        heifFile = pyheif.read(file_path)
-        image = Image.frombytes(
-            heifFile.mode,
-            heifFile.size,
-            heifFile.data,
-            "raw",
-            heifFile.mode,
-            heifFile.stride,
-        )
+        heifFile = Image.open(file_path)
         jpgFile = file_path.with_suffix(".jpg")
-        image.save(jpgFile, "JPEG", quality=quality)
+        heifFile.convert("RGB").save(jpgFile, "JPEG", quality=quality)
         logging.info(f"Converted {file_path.name} to {jpgFile.name}")
     except Exception as e:
         logging.error(f"Failed to convert {file_path.name}: {e}")

@@ -6,7 +6,7 @@ authors = [{ name = "Guillaume Mousnier", email = "guillaume.mousnier@datawizard
 
 dependencies = [
     "Pillow>=10.0.0",
-    "pyheif>=0.7.0"
+    "pillow-heif>=1.4.0"
 ]
 
 [project.scripts]
